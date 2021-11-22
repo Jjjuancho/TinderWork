@@ -1,0 +1,205 @@
+<!-- We don't need a full layout in this file because this page will be parsed with Ajax.  -->
+<div class="page" data-name="regform">
+    <br> <br> <br>
+    <div class="page">
+        <div class="navbar">
+            <div class="navbar-bg"></div>
+            <div class="navbar-inner">
+                <div class="title">Form Inputs</div>
+            </div>
+        </div>
+        <div class="page-content">
+            <div class="page">
+                <div class="navbar">
+                    <div class="navbar-bg"></div>
+                    <div class="navbar-inner">
+                        <div class="title">Form Inputs</div>
+                    </div>
+                </div>
+                <div class="page-content" id="pagina">
+                    <form class="list form-ajax-submit" id="rform">
+                        <div class="block-inline text-align-center">Crea tu cuenta</div>
+                        <div class="list inline-labels no-hairlines-md">
+                            <ul>
+                                <div class="cj">
+                                    <div class="display-flex row">
+                                        <div class="col-100">
+                                            <li class="item-content item-input">
+                                                <div class="item-inner">
+                                                    <div class="item-title item-label">Nombre</div>
+                                                    <div class="item-input-wrap">
+                                                        <input type="text" id="rNombre" placeholder="Ej: Martín" />
+                                                        <span class="input-clear-button"></span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </div>
+                                    </div>
+                                    <div class="is">
+                                        <br>
+                                    </div>
+                                    <div class="display-flex row">
+                                        <div class="col-100">
+                                            <li class="item-content item-input">
+                                                <div class="item-inner">
+                                                    <div class="item-title item-label">Apellido</div>
+                                                    <div class="item-input-wrap">
+                                                        <input type="text" id="rApellido" placeholder="Ej: López" />
+                                                        <span class="input-clear-button"></span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </div>
+                                    </div>
+                                    <div class="is">
+                                        <br>
+                                    </div>
+                                    <div class="display-flex row">
+                                        <div class="col-100">
+                                            <li class="item-content item-input">
+                                                <div class="item-inner">
+                                                    <div class="item-title item-label">E-mail</div>
+                                                    <div class="item-input-wrap">
+                                                        <input type="email" id="email"
+                                                            placeholder="Ej: mlopez@gmail.com" />
+                                                        <span class="input-clear-button"></span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </div>
+                                    </div>
+                                    <div class="is">
+                                        <br>
+                                    </div>
+                                    <div class="display-flex row">
+                                        <div class="col-100">
+                                            <li class="item-content item-input">
+                                                <div class="item-inner">
+                                                    <div class="item-title item-label">Contraseña</div>
+                                                    <div class="item-input-wrap">
+                                                        <input type="password" id="pw" placeholder="Ej: Hola123" />
+                                                        <span class="input-clear-button"></span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </div>
+                                    </div>
+                                    <div class="is">
+                                        <br>
+                                    </div>
+                                    <div class="display-flex row">
+                                        <div class="col-100">
+                                            <li class="item-content item-input">
+                                                <div class="item-inner">
+                                                    <div class="item-title item-label">Teléfono</div>
+                                                    <div class="item-input-wrap">
+                                                        <input type="tel" id="rTelefono"
+                                                            placeholder="Ej: +54 9 341 1234567" />
+                                                        <span class="input-clear-button"></span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </div>
+                                    </div>
+                                    <div class="is">
+                                        <br>
+                                    </div>
+                                    <div class="display-flex row">
+                                        <div class="col-100">
+                                            <li class="item-content item-input">
+                                                <div class="item-inner">
+                                                    <div class="item-title item-label">Género</div>
+                                                    <div class="item-input-wrap input-dropdown-wrap">
+                                                        <select placeholder="Elegir género" id="rgen">
+                                                            <option value="Masculino">Masculino</option>
+                                                            <option value="Femenino">Femenino</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </div>
+                                    </div>
+                                    <div class="is">
+                                        <br>
+                                    </div>
+                                    <div class="display-flex row">
+                                        <div class="col-100">
+                                            <li class="item-content item-input">
+                                                <div class="item-inner">
+                                                    <div class="item-title item-label">Fecha de nacimiento</div>
+                                                    <div class="item-input-wrap">
+                                                        <input type="date" value="yyyy-MM-dd" id="rfe"
+                                                            placeholder="Elegir fecha" />
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </div>
+                                    </div>
+                                    <div class="is">
+                                        <br>
+                                    </div>
+                                    <div class="display-flex row">
+                                        <div class="col-100">
+                                            <li class="item-content item-input">
+                                                <div class="item-inner">
+                                                    <div class="item-title item-label">Tipo de usuario</div>
+                                                    <div class="item-input-wrap input-dropdown-wrap">
+                                                        <select placeholder="Please choose..." id="rus">
+                                                            <option value="Buscador de servicios" id="oculto">
+                                                                Buscador de servicios
+                                                            </option>
+                                                            <option value="Prestador de servicios" id="mostrar">
+                                                                Prestador de servicios
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </div>
+                                    </div>
+                                    <div class="is" id="mas" style="display:none">
+                                        <br>
+                                    </div>
+                                    <div class="display-flex row">
+                                        <div class="col-lg" id="mas" style="display:none">
+                                            <li class="item-content item-input">
+                                                <div class="item-inner">
+                                                    <div class="item-title item-label ">Seleccione el rubro en el que se
+                                                        especializa
+                                                    </div>
+                                                    <div class="item-input-wrap input-dropdown-wrap">
+                                                        <select placeholder="Elegir género" id="rubro">
+                                                            <option value=""></option>
+                                                            <option value="Electricista">Electricista</option>
+                                                            <option value="Gasista">Gasista</option>
+                                                            <option value="Plomero">Plomero</option>
+                                                            <option value="Carpintero">Carpintero</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ul>
+                        </div>
+                    </form>
+                    <div class="is">
+                        <div class="col-75">
+                            <div class="col">
+                                <a class="button button-fill convert-form-to-data" href="#" id="rok">Registrarme</a>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <div class="is" id="mas" style="display:none">
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

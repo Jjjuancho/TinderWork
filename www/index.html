@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+    <!--<meta http-equiv="Content-Security-Policy"
+        content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+    -->
+    <!-- Required meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <!-- Color theme for statusbar -->
+    <!-- <meta name="theme-color" content="#2196f3"> -->
+    <meta name="color-scheme" content="light dark">
+
+    <!-- Your app title -->
+    <title>TinderWork</title>
+    <!-- Path to Framework7 Library CSS -->
+    <link rel="stylesheet" href="lib/framework7/framework7-bundle.min.css">
+    <!-- Path to icons -->
+    <link rel="stylesheet" href="css/icons.css">
+    <!-- Path to your custom app styles-->
+    <link rel="stylesheet" href="css/app.css">
+</head>
+
+<body>
+    <div id="app">
+        <!-- Statusbar overlay -->
+        <div class="statusbar"></div>
+
+        <!-- Your main view, should have "view-main" class -->
+        <div class="view view-main">
+
+            <!-- NAVBAR -->
+            <div class="navbar" id="nb">
+                <div class="navbar-bg"></div>
+                <div class="navbar-inner sliding">
+                    <div class="left">
+                        <a href="/index/" class="f7-icons link" id="casa">house_fill</a>
+                    </div>
+                    <div class="title text-align-center">TinderWork</div>
+                    <div class="right">
+                        <a href="#" class="link" id="nbcer" style="display: none">Cerrar sesión</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Initial Page, "data-name" contains page name -->
+            <div data-name="index" class="page">
+                <div class="page-content">
+
+                    <br><br>
+                    <div id="botonini">
+                        <a href="/regini/"
+                            class="button button-large button-fill button-preloader ${isLoading ? 'button-loading' : ''}"
+                            id="nbini">Iniciar Sesión</a>
+                    </div>
+                    <br><br>
+                    <div id="botonreg">
+                        <a href="/regform/"
+                            class="button button-large button-fill button-preloader ${isLoading ? 'button-loading' : ''}"
+                            id="nbreg">Registrarse</a>
+                    </div>
+                    <br><br>
+                </div>
+
+                <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-app.js"></script>
+                <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-auth.js"></script>
+                <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-firestore.js"></script>
+                <script>
+                    // Your web app's Firebase configuration
+                    const firebaseConfig = {
+                        apiKey: "AIzaSyDEfTIzApLEUeVhDV4r8DTGtYQR-EXkqCQ",
+                        authDomain: "tinderwork-e5060.firebaseapp.com",
+                        projectId: "tinderwork-e5060",
+                        storageBucket: "tinderwork-e5060.appspot.com",
+                        messagingSenderId: "118487451220",
+                        appId: "1:118487451220:web:bd7599be5cdd7bd4d1cfc1"
+                    };
+                    // Initialize Firebase
+                    firebase.initializeApp(firebaseConfig);
+                </script>
+                <script type="text/javascript" src="cordova.js"></script>
+                <script type="text/javascript" src="lib/framework7/framework7-bundle.min.js"></script>
+                <script type="text/javascript" src="js/my-app.js"></script>
+</body>
+
+</html>
