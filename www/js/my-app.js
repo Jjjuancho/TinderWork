@@ -16,8 +16,8 @@ var app = new Framework7({
   // Add default routes
   routes: [
     {
-      path: '/about/',
-      url: 'about.html',
+      path: '/chat/',
+      url: 'chat.html',
     },
     {
       path: '/regform/',
@@ -167,12 +167,6 @@ $$(document).on('page:init', '.page[data-name="regini"]', function (e) {
 
         var docRef = colUsuario.doc(claveDeColeccion);
 
-        let hola;
-
-
-
-        console.log(hola);
-
         docRef.get().then((doc) => {
           if (doc.exists) {
             console.log("Document data:", doc.data());
@@ -230,7 +224,8 @@ $$(document).on('page:init', '.page[data-name="pbuscador"]', function (e) {
           `<div class="card">
             <div class="card-header">`+ doc.data().nombre + ` ` + doc.data().apellido + `</div>
             <div class="card-footer">`+ doc.data().rubro + `</div>
-          </div> `;
+            <input type="button" value="contactar" class="button button-fill convert-form-to-data" onclick="chatCon('` + doc.id + `')" id=` + doc.id + `>
+            </div> `;
 
 
       });
@@ -259,8 +254,67 @@ $$(document).on('page:init', '.page[data-name="pbuscador"]', function (e) {
   })
 
 
+})
 
 
+var botonid = "";
+//FILTRAR PRESTADORES POR RUBRO
+$$(document).on('change', "#rubros", function () {
+
+  //SE VACIA LA LISTA DE PRESTADORES
+  $$("#contResultados").empty();
+
+  //SE MUESTRAN LOS PRESTADORES DEL RUBRO SELECCIONADO
+  var rubs = $$("#rubros").val();
+  var g = "";
+
+  colUsuario.where('rubro', '==', rubs).get()
+    .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+
+        botonid = doc.id
+        console.log(botonid)
+
+        g +=
+          `<div class="card">
+            <div class="card-header">`+ doc.data().nombre + ` ` + doc.data().apellido + `</div>
+            <div class="card-footer">`+ doc.data().rubro + `</div>
+            <input type="button" value="contactar" class="button button-fill convert-form-to-data puta" onclick="chatCon('` + doc.id + `')" id=` + doc.id + `>
+            </div> `;
+
+
+      });
+
+      $$("#contResultados").html(g);
+
+    })
+    .catch((error) => {
+      console.log("Error getting documents: ", error);
+    });
+})
+
+
+//PAGINA PRESTADOR
+$$(document).on('page:init', '.page[data-name="pprestador"]', function (e) {
+  $$("#nbini").css("display", "none");
+  $$("#nbreg").css("display", "none");
+  $$("#nbcer").css("display", "block");
+
+  $$("#nbcer").on("click", function () {
+    firebase.auth().signOut().then(() => {
+      // Sign-out successful.
+      mainView.router.navigate('/index/');
+      console.log("sesión cerrada");
+      $$("#nbini").css("display", "block");
+      $$("#nbreg").css("display", "block");
+      $$("#nbcer").css("display", "none");
+
+    }).catch((error) => {
+      // An error happened.
+    });
+  })
+
+  //CHAT
   var txtMessage = $$('#mensaje');
   var btnSend = $$('#botonm');
   var bChat = $$('#guardarchat');
@@ -311,62 +365,18 @@ $$(document).on('page:init', '.page[data-name="pbuscador"]', function (e) {
 })
 
 
-//FILTRAR PRESTADORES POR RUBRO
-$$(document).on('change', "#rubros", function () {
+//REDIRECCIONAMIENTO A CHAT
+function chatCon(mailUsuario) {
+  botonid = mailUsuario
+  console.log(botonid)
+  mainView.router.navigate('/chat/');
 
-  //SE VACIA LA LISTA DE PRESTADORES
-  $$("#contResultados").empty();
-
-  //SE MUESTRAN LOS PRESTADORES DEL RUBRO SELECCIONADO
-  var rubs = $$("#rubros").val();
-  var g = "";
-
-  colUsuario.where('rubro', '==', rubs).get()
-    .then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-
-        g +=
-          `<div class="card">
-            <div class="card-header">`+ doc.data().nombre + ` ` + doc.data().apellido + `</div>
-            <div class="card-footer">`+ doc.data().rubro + `</div>
-          </div> `;
+}
 
 
-      });
+//PAGE INIT CHAT
+$$(document).on('page:init', '.page[data-name="chat"]', function (e) {
 
-      $$("#contResultados").html(g);
-
-    })
-    .catch((error) => {
-      console.log("Error getting documents: ", error);
-    });
-
-
-
-
-
-})
-
-
-
-$$(document).on('page:init', '.page[data-name="pprestador"]', function (e) {
-  $$("#nbini").css("display", "none");
-  $$("#nbreg").css("display", "none");
-  $$("#nbcer").css("display", "block");
-
-  $$("#nbcer").on("click", function () {
-    firebase.auth().signOut().then(() => {
-      // Sign-out successful.
-      mainView.router.navigate('/index/');
-      console.log("sesión cerrada");
-      $$("#nbini").css("display", "block");
-      $$("#nbreg").css("display", "block");
-      $$("#nbcer").css("display", "none");
-
-    }).catch((error) => {
-      // An error happened.
-    });
-  })
 
 
   var txtMessage = $$('#mensaje');
