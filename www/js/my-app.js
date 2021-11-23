@@ -257,6 +257,57 @@ $$(document).on('page:init', '.page[data-name="pbuscador"]', function (e) {
       // An error happened.
     });
   })
+
+
+
+
+  var txtMessage = $$('#mensaje');
+  var btnSend = $$('#botonm');
+  var bChat = $$('#guardarchat');
+  var user = firebase.auth().currentUser;
+  colUsuario.doc(user.email).get().then((doc) => {
+    if (doc.exists) {
+      btnSend.on('click', function (e) {
+        if (txtMessage.val() !== '') {
+          var message = txtMessage.val();
+          var completeName = doc.data().nombre + ' ' + doc.data().apellido;
+
+          txtMessage.val('');
+
+          firebase.database().ref('chat').push({
+            nombre: completeName,
+            mensaje: message
+          })
+        }
+      })
+
+      firebase.database().ref('chat').on('value', function (snapshot) {
+        var html = '';
+
+        snapshot.forEach(function (e) {
+          var element = e.val();
+          var name = element.nombre;
+          var message = element.mensaje;
+          var completeName = doc.data().nombre + ' ' + doc.data().apellido;
+
+          if (name === completeName) {
+            html += `<p class="message-chat user-message"><b> ${name}: </b> ${message} </p>`;
+          } else {
+            html += `<p class="message-chat"><b> ${name}: </b> ${message} </p>`;
+          }
+
+        })
+
+        bChat.html(html);
+      })
+    } else {
+      // doc.data() will be undefined in this case
+      // "No such document!"
+    }
+  }).catch((error) => {
+    // "Error getting document"
+  });
+
 })
 
 
@@ -289,4 +340,80 @@ $$(document).on('change', "#rubros", function () {
     .catch((error) => {
       console.log("Error getting documents: ", error);
     });
+
+
+
+
+
+})
+
+
+
+$$(document).on('page:init', '.page[data-name="pprestador"]', function (e) {
+  $$("#nbini").css("display", "none");
+  $$("#nbreg").css("display", "none");
+  $$("#nbcer").css("display", "block");
+
+  $$("#nbcer").on("click", function () {
+    firebase.auth().signOut().then(() => {
+      // Sign-out successful.
+      mainView.router.navigate('/index/');
+      console.log("sesión cerrada");
+      $$("#nbini").css("display", "block");
+      $$("#nbreg").css("display", "block");
+      $$("#nbcer").css("display", "none");
+
+    }).catch((error) => {
+      // An error happened.
+    });
+  })
+
+
+  var txtMessage = $$('#mensaje');
+  var btnSend = $$('#botonm');
+  var bChat = $$('#guardarchat');
+  var user = firebase.auth().currentUser;
+  colUsuario.doc(user.email).get().then((doc) => {
+    if (doc.exists) {
+      btnSend.on('click', function (e) {
+        if (txtMessage.val() !== '') {
+          var message = txtMessage.val();
+          var completeName = doc.data().nombre + ' ' + doc.data().apellido;
+
+          txtMessage.val('');
+
+          firebase.database().ref('chat').push({
+            nombre: completeName,
+            mensaje: message
+          })
+        }
+      })
+
+      firebase.database().ref('chat').on('value', function (snapshot) {
+        var html = '';
+
+        snapshot.forEach(function (e) {
+          var element = e.val();
+          var name = element.nombre;
+          var message = element.mensaje;
+          var completeName = doc.data().nombre + ' ' + doc.data().apellido;
+
+          if (name === completeName) {
+            html += `<p class="message-chat user-message"><b> ${name}: </b> ${message} </p>`;
+          } else {
+            html += `<p class="message-chat"><b> ${name}: </b> ${message} </p>`;
+          }
+
+        })
+
+        bChat.html(html);
+      })
+    } else {
+      // doc.data() will be undefined in this case
+      // "No such document!"
+    }
+  }).catch((error) => {
+    // "Error getting document"
+  });
+
 })
