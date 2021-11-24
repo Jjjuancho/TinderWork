@@ -143,6 +143,7 @@ $$(document).on('page:init', '.page[data-name="regform"]', function (e) {
 
 var db = firebase.firestore();
 var colUsuario = db.collection("Usuarios");
+var colChat = db.collection("SalasChat");
 
 //INICIO DE SESION
 $$(document).on('page:init', '.page[data-name="regini"]', function (e) {
@@ -293,6 +294,11 @@ $$(document).on('change', "#rubros", function () {
     });
 })
 
+var chatid = function randomUID() {
+  return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
+    (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+  );
+};
 
 //PAGINA PRESTADOR
 $$(document).on('page:init', '.page[data-name="pprestador"]', function (e) {
@@ -345,7 +351,7 @@ $$(document).on('page:init', '.page[data-name="pprestador"]', function (e) {
           var completeName = doc.data().nombre + ' ' + doc.data().apellido;
 
           if (name === completeName) {
-            html += `<p class="message-chat user-message"><b> ${name}: </b> ${message} </p>`;
+            html += `<p class="message-chat user-message "><b> ${name}: </b> ${message} </p>`;
           } else {
             html += `<p class="message-chat"><b> ${name}: </b> ${message} </p>`;
           }

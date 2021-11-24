@@ -1,8 +1,32 @@
-.puta {
-  padding-left: 15%;
-  padding-right: 15%;
+.center{
+  text-align: center;
+}
+.chatg{
+  border: 2px solid black;
+  padding-right: 10%;
+  padding-left: 5%;
+}
+.jueves{
+  background-color: darkgrey !important;
+  border-bottom: 2px solid black;
+  border-left: 2px solid black !important;
+  border-right: 2px solid black !important;
 }
 
+.chatc{
+background-color: darkgrey !important;
+}
+
+.textaso{
+background-color: darkgrey !important;
+}
+
+.message-chat{
+  color: red;
+}
+.user-message{
+  color: green !important;
+}
 #botonini, #botonreg {
   padding-left: 7%;
   padding-right: 7%;
