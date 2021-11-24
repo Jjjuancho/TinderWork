@@ -1,6 +1,27 @@
-.puta {
-  padding-left: 15%;
-  padding-right: 15%;
+#mensaje, #botonm, #guardarchat{
+  background: white;
+  padding: 8px 16px 8px 8px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: black;
+  color: black;
+}
+
+#mensaje{
+  width: 100%;
+}
+
+#contenidochat{
+  display: flex;
+}
+
+.chat {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+#casa {
+color: #000;
 }
 
 #botonini, #botonreg {
@@ -8,12 +29,17 @@
   padding-right: 7%;
 }
 
+
+
 .page-content {
-  background-color: #C7DFFF;
+  background-color: #F1F1F1;
 }
 
-.is {
-  background-color: #C7DFFF;
+.is{
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  background-color: #F1F1F1;
 }
 
 .content-select select{
@@ -52,6 +78,26 @@
 .content-select select:hover{
 	background: #f0f0f0;
 }
+
+.cj{
+  padding: 0px 10px 0px 10px;
+  background-color: #F1F1F1;
+  }
+  
+
+.es{
+  background: white;
+  padding: 8px 16px 8px 8px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #D0D0D0;
+}
+
+.bo {
+  background: #D0D0D0;
+  color: black;
+}
+
  
 /* 
 Creamos la fecha que aparece a la izquierda del select.
@@ -79,13 +125,13 @@ dos bordes con color y que giramos con transform: rotate(-45deg);
   padding-left: 4%;
 }
 #pagina{
-  background-color: rgb(199, 223, 255);;
+  background-color: #F1F1F1;;
 }
 .row{
-  background-color: rgb(175, 210, 255);
+  background-color: #F1F1F1;
 }
 .sas{
-  background-color: rgb(175, 210, 255);
+  background-color: #F1F1F1;
 }
 
 .demo-swiper .swiper-slide {
